@@ -37,6 +37,7 @@ export default {
   methods: {
     resetState: function() {
       this.browsingPastCommands = false;
+      this.browsingPastCommandsIndex = this.entries.length - 1;
     },
     onKeyUp: function(event) {
       //Using onkeyup because onkeypress doesn't fire for arrow keys
@@ -46,16 +47,20 @@ export default {
           break;
         case "ArrowUp":
           if (!this.input && !this.browsingPastCommands)
-            this.input = this.grabPreviousCommand(true);
+            this.input = this.getPreviousCommand(true);
           else if (this.browsingPastCommands)
-            this.input = this.grabPreviousCommand();
+            this.input = this.getPreviousCommand();
+          break;
+        case "ArrowDown":
+          if (this.browsingPastCommands)
+            this.input = this.getNextCommand();
           break;
         default:
           this.resetState();
           break;
       }
     },
-    grabPreviousCommand: function(reset) {
+    getPreviousCommand: function(reset) {
       if (!this.entries.length) return "";
       this.browsingPastCommands = true;
       if (reset || this.browsingPastCommandsIndex - 1 < -1)
@@ -63,6 +68,16 @@ export default {
 
         let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
         this.browsingPastCommandsIndex--;
+        return cmdInput;
+    },
+    getNextCommand: function() {
+      if (!this.entries.length) return "";
+      this.browsingPastCommands = true;
+      if (this.browsingPastCommandsIndex + 1 > this.entries.length)
+        this.browsingPastCommandsIndex = 0;
+
+        let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
+        this.browsingPastCommandsIndex++;
         return cmdInput;
     },
     executeCommand: function() {
