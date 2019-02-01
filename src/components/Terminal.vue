@@ -11,7 +11,7 @@
     </div>
     <div class="terminalInput">
       <span class="inputIndicator">></span>
-      <input type="text" class="inputLine" v-model="input" @keypress="onKeyPress">
+      <input type="text" class="inputLine" v-model="input" @keyup="onKeyUp">
     </div>
   </div>
 </template>
@@ -29,25 +29,55 @@ export default {
   data: function() {
     return {
       entries: [],
-      input: ""
+      input: "",
+      browsingPastCommands: false,
+      browsingPastCommandsIndex: 0,
     };
   },
   methods: {
-    onKeyPress: function(event) {
-      if (event.key === "Enter" && this.input) {
-        this.entries.push({
-          cmdInput: this.input,
-          timeStamp: new Date().getTime()
-        });
-        this.input = "";
-        Vue.nextTick(
-          function() {
-            this.$refs.scroller.scrollTop = this.$refs.scroller.scrollHeight;
-          }.bind(this)
-        );
-
-        if (this.onCommand) this.onCommand();
+    resetState: function() {
+      this.browsingPastCommands = false;
+    },
+    onKeyUp: function(event) {
+      //Using onkeyup because onkeypress doesn't fire for arrow keys
+      switch (event.key) {
+        case "Enter":
+          if (this.input) this.executeCommand();
+          break;
+        case "ArrowUp":
+          if (!this.input && !this.browsingPastCommands)
+            this.input = this.grabPreviousCommand(true);
+          else if (this.browsingPastCommands)
+            this.input = this.grabPreviousCommand();
+          break;
+        default:
+          this.resetState();
+          break;
       }
+    },
+    grabPreviousCommand: function(reset) {
+      if (!this.entries.length) return "";
+      this.browsingPastCommands = true;
+      if (reset || this.browsingPastCommandsIndex - 1 < -1)
+        this.browsingPastCommandsIndex = this.entries.length - 1;
+
+        let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
+        this.browsingPastCommandsIndex--;
+        return cmdInput;
+    },
+    executeCommand: function() {
+      this.entries.push({
+        cmdInput: this.input,
+        timeStamp: new Date().getTime()
+      });
+      this.input = "";
+      Vue.nextTick(
+        function() {
+          this.$refs.scroller.scrollTop = this.$refs.scroller.scrollHeight;
+        }.bind(this)
+      );
+
+      if (this.onCommand) this.onCommand();
     }
   }
 };
@@ -68,12 +98,14 @@ export default {
 .inputLine {
   color: rgb(245, 245, 245);
   background-color: rgb(33, 33, 44);
+  caret-color: rgb(245, 245, 245);
   border: none;
   outline: none;
   flex: 1 0;
 }
 .terminalInput {
   display: flex;
+  padding: 8px 0px 8px 0px;
 }
 .inputIndicator {
   font-size: 12px;
@@ -84,7 +116,7 @@ export default {
 .scroller {
   scroll-behavior: smooth;
   overflow-y: auto;
-  max-height: 100px;
+  max-height: 500px;
 }
 .scroller::-webkit-scrollbar {
   width: 6px;
