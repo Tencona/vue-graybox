@@ -1,16 +1,18 @@
 <template>
-    <div><span class="cmdPrefix">{{displayTime}}</span>{{cmdInput}}
-    </div>
+  <div>
+    <span class="cmdPrefix">{{displayTime}}</span>
+    {{cmdInput}}
+  </div>
 </template>
 
 <script>
 export default {
   name: "TerminalEntry",
-  props: ['cmdInput','timeStamp'],
+  props: ["cmdInput", "timeStamp"],
   data: function() {
     return {
-      displayTime: new Date(this.timeStamp).toTimeString().split(' ')[0]
-    }
+      displayTime: new Date(this.timeStamp).toTimeString().split(" ")[0]
+    };
   },
   methods: {}
 };

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <Terminal title="Terminal v1.0" :onCommand="runCommand" />
+    <img alt="Vue logo" src="./assets/logo.png">
+    <Terminal ref="terminal" title="Terminal v1.0" :onCommand="runCommand"/>
   </div>
 </template>
 
@@ -11,11 +11,13 @@ import Terminal from "./components/Terminal.vue";
 export default {
   name: "app",
   components: {
-    Terminal,
+    Terminal
   },
   methods: {
-    runCommand: function() {
-      console.log("success!");
+    runCommand: function(userInput) {
+      //do stuff
+
+      return `Echo: ${userInput}`
     }
   }
 };

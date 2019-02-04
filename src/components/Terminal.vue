@@ -31,7 +31,7 @@ export default {
       entries: [],
       input: "",
       browsingPastCommands: false,
-      browsingPastCommandsIndex: 0,
+      browsingPastCommandsIndex: 0
     };
   },
   methods: {
@@ -52,8 +52,7 @@ export default {
             this.input = this.getPreviousCommand();
           break;
         case "ArrowDown":
-          if (this.browsingPastCommands)
-            this.input = this.getNextCommand();
+          if (this.browsingPastCommands) this.input = this.getNextCommand();
           break;
         default:
           this.resetState();
@@ -66,9 +65,9 @@ export default {
       if (reset || this.browsingPastCommandsIndex - 1 < -1)
         this.browsingPastCommandsIndex = this.entries.length - 1;
 
-        let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
-        this.browsingPastCommandsIndex--;
-        return cmdInput;
+      let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
+      this.browsingPastCommandsIndex--;
+      return cmdInput;
     },
     getNextCommand: function() {
       if (!this.entries.length) return "";
@@ -76,23 +75,28 @@ export default {
       if (this.browsingPastCommandsIndex + 1 > this.entries.length)
         this.browsingPastCommandsIndex = 0;
 
-        let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
-        this.browsingPastCommandsIndex++;
-        return cmdInput;
+      let cmdInput = this.entries[this.browsingPastCommandsIndex].cmdInput;
+      this.browsingPastCommandsIndex++;
+      return cmdInput;
     },
     executeCommand: function() {
-      this.entries.push({
-        cmdInput: this.input,
-        timeStamp: new Date().getTime()
-      });
+      let userInput = this.input;
       this.input = "";
+      // this.writeLine(userInput);
       Vue.nextTick(
         function() {
           this.$refs.scroller.scrollTop = this.$refs.scroller.scrollHeight;
         }.bind(this)
       );
 
-      if (this.onCommand) this.onCommand();
+      if (this.onCommand) this.writeLine(this.onCommand(userInput));
+    },
+    writeLine: function(input) {
+      if(!input) return;
+      this.entries.push({
+        cmdInput: input,
+        timeStamp: new Date().getTime()
+      });
     }
   }
 };
