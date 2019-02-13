@@ -1,26 +1,41 @@
 <template>
-  <div>
-    <span class="cmdPrefix">{{displayTime}}</span>
-    {{cmdInput}}
-  </div>
+	<div class="terminalEntry">
+		<div class="cmdPrefix">
+			<div class="cmdPrefixTime">{{displayTime}}</div>
+			<!-- <div class="cmdPrefixCmdInput">[{{cmdInput}}]</div> -->
+		</div>
+		<div class="cmdOutput">{{cmdOutput}}</div>
+	</div>
 </template>
 
 <script>
 export default {
-  name: "TerminalEntry",
-  props: ["cmdInput", "timeStamp"],
-  data: function() {
-    return {
-      displayTime: new Date(this.timeStamp).toTimeString().split(" ")[0]
-    };
-  },
-  methods: {}
+	name: "TerminalEntry",
+	props: ["timeStamp", "cmdInput", "cmdOutput"],
+	data: function() {
+		return {
+			displayTime: new Date(this.timeStamp).toTimeString().split(" ")[0]
+		};
+	},
+	methods: {}
 };
 </script>
 
 <style scoped>
+.terminalEntry {
+	display: flex;
+}
 .cmdPrefix {
-  color: rgb(150, 150, 150);
-  margin-right: 8px;
+	display: flex;
+	margin-right: 8px;
+}
+.cmdPrefixTime {
+	color: rgb(150, 150, 150);
+}
+.cmdPrefixCmdInput {
+	color: rgb(110, 110, 110);
+}
+.cmdOutput {
+	margin-top: auto;
 }
 </style>
