@@ -141,6 +141,7 @@ export default {
 }
 .scroller::-webkit-scrollbar {
 	width: 6px;
+	height: 6px;
 }
 .scroller::-webkit-scrollbar-track {
 	background: none;
@@ -155,6 +156,9 @@ export default {
 }
 .scroller::-webkit-scrollbar-thumb:hover {
 	background: rgb(245, 245, 245);
+}
+.scroller::-webkit-scrollbar-corner {
+	display: none;
 }
 /* Scrollbar End */
 </style>
