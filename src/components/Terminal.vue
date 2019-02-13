@@ -5,9 +5,8 @@
 			<TerminalEntry
 				v-for="(entry) in entries"
 				:key="entry.timeStamp"
-				:timeStamp="entry.timeStamp"
-				:cmdInput="entry.cmdInput"
-				:cmdOutput="entry.cmdOutput"
+				:entry="entry"
+				:config="config"
 			/>
 		</div>
 		<div class="terminalInput">
@@ -26,14 +25,27 @@ export default {
 	components: {
 		TerminalEntry
 	},
-	props: ["title", "onCommand"],
+	props: ["title", "onCommand", "configuration", "commands"],
 	data: function() {
 		return {
 			entries: [],
 			cmdInput: "",
 			browsingPastCommands: false,
-			browsingPastCommandsIndex: 0
+			browsingPastCommandsIndex: 0,
+			config: {
+				enableInternalCommands: true,
+				showTime: true,
+				globalPrefix: "",
+				scopedPrefix: ""
+			}
 		};
+	},
+	mounted() {
+		//Overwrite valid configurations with user-given configurations
+		let validKeys = Object.keys(this.config);
+		Object.keys(this.configuration).forEach(c => {
+			if (validKeys.includes(c)) this.config[c] = this.configuration[c];
+		});
 	},
 	methods: {
 		resetState: function() {
@@ -83,22 +95,24 @@ export default {
 			return cmdNext;
 		},
 		executeCommand: function() {
+			if (this.onCommand) {
+				let now = new Date().getTime();
+				this.writeLine(
+					this.cmdInput,
+					now,
+					this.onCommand(this.cmdInput)
+				);
+			}
+			this.cmdInput = "";
 			Vue.nextTick(
 				function() {
 					this.$refs.scroller.scrollTop = this.$refs.scroller.scrollHeight;
 				}.bind(this)
 			);
-
-			if (this.onCommand)
-				this.writeLine(this.cmdInput, this.onCommand(this.cmdInput));
-			this.cmdInput = "";
 		},
-		writeLine: function(cmdInput, cmdOutput) {
-			this.entries.push({
-				timeStamp: new Date().getTime(),
-				cmdInput: cmdInput,
-				cmdOutput: cmdOutput
-			});
+		writeLine: function(cmdInput, timeStamp, cmdOutput) {
+			cmdOutput.timeStamp = timeStamp;
+			this.entries.push(cmdOutput);
 		}
 	}
 };
