@@ -35,8 +35,7 @@ export default {
 			config: {
 				enableInternalCommands: true,
 				showTime: true,
-				globalPrefix: "",
-				scopedPrefix: ""
+				globalPrefix: ""
 			}
 		};
 	},
@@ -112,6 +111,7 @@ export default {
 		},
 		writeLine: function(cmdInput, timeStamp, cmdOutput) {
 			cmdOutput.timeStamp = timeStamp;
+			cmdOutput.cmdInput = cmdInput;
 			this.entries.push(cmdOutput);
 		}
 	}

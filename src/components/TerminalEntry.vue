@@ -8,7 +8,6 @@
 				<template v-if="showPrefixGlobal">
 					<div class="cmdPrefixGlobal">{{config.globalPrefix}}</div>
 				</template>
-
 				<template v-if="showPrefixScoped">
 					<div class="cmdPrefixScoped">{{entry.scopedPrefix}}</div>
 				</template>
@@ -38,9 +37,10 @@ export default {
 				.split(" ")[0],
 			// showTime: this.config.showTime,
 			testString: "prefixTest"
+			// showPrefixGlobal: true
 		};
 	},
-	methods: {
+	computed: {
 		showTime() {
 			return this.config.showTime;
 		},
@@ -50,7 +50,8 @@ export default {
 		showPrefixScoped() {
 			return this.entry.scopedPrefix;
 		}
-	}
+	},
+	methods: {}
 };
 </script>
 
@@ -79,6 +80,12 @@ export default {
 }
 .cmdPrefixScoped {
 	padding-right: 8px;
+}
+.cmdText {
+	border-left: 1px;
+	border-left-color: rgb(100, 100, 100);
+	border-left-style: solid;
+	padding-left: 4px;
 }
 .cmdInput {
 	color: rgb(150, 150, 150);
