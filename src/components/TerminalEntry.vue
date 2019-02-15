@@ -1,23 +1,27 @@
 <template>
 	<div class="terminalEntry">
-		<div class="cmdPrefixStickyWrapper">
-			<div class="cmdPrefix">
-				<template v-if="config.showTime">
-					<div class="cmdPrefixTime">{{displayTime}}</div>
-				</template>
-				<template v-if="config.globalPrefix">
-					<div class="cmdPrefixGlobal">{{config.globalPrefix}}</div>
-				</template>
-				<template v-if="entry.scopedPrefix">
-					<div class="cmdPrefixScoped">{{entry.scopedPrefix}}</div>
-				</template>
+		<template v-if="getEntryOverride('showCmdPrefix')">
+			<div class="cmdPrefixStickyWrapper">
+				<div class="cmdPrefix">
+					<template v-if="getEntryOverride('showTime')">
+						<div class="cmdPrefixTime">{{displayTime}}</div>
+					</template>
+					<template v-if="getEntryOverride('showGlobalPrefix')">
+						<div class="cmdPrefixGlobal">{{getEntryOverride('globalPrefix')}}</div>
+					</template>
+					<template v-if="getEntryOverride('showScopedPrefix')">
+						<div class="cmdPrefixScoped">{{getEntryOverride('scopedPrefix')}}</div>
+					</template>
+				</div>
 			</div>
-		</div>
+		</template>
 		<div class="cmdText">
-			<template v-if="config.showCmdInput">
+			<template v-if="getEntryOverride('showCmdInput')">
 				<div class="cmdInput">{{entry.cmdInput}}</div>
 			</template>
-			<div class="cmdOutput">{{entry.cmdOutput}}</div>
+			<template v-if="getEntryOverride('showCmdOutput')">
+				<div class="cmdOutput">{{entry.cmdOutput}}</div>
+			</template>
 		</div>
 	</div>
 </template>
@@ -36,14 +40,17 @@ export default {
 		return {
 			displayTime: new Date(this.entry.timeStamp)
 				.toTimeString()
-				.split(" ")[0],
-			// showTime: this.config.showTime,
-			testString: "prefixTest"
-			// showPrefixGlobal: true
+				.split(" ")[0]
 		};
 	},
 	computed: {},
-	methods: {}
+	methods: {
+		getEntryOverride(prop) {
+			if (this.entry[prop] !== undefined) return this.entry[prop];
+			else if (this.config[prop] !== undefined) return this.config[prop];
+			return undefined;
+		}
+	}
 };
 </script>
 

@@ -34,9 +34,15 @@ export default {
 			browsingPastCommandsIndex: 0,
 			config: {
 				enableInternalCommands: true,
+
+				showCmdPrefix: true,
 				showTime: true,
+				showGlobalPrefix: true,
+				globalPrefix: "global",
+				showScopedPrefix: true,
+				scopedPrefix: "scope", //Prefix text written to the right of the global prefix
 				showCmdInput: true,
-				globalPrefix: ""
+				showCmdOutput: true
 			}
 		};
 	},
@@ -103,6 +109,7 @@ export default {
 					this.onCommand(this.cmdInput)
 				);
 			}
+
 			this.cmdInput = "";
 			Vue.nextTick(
 				function() {
@@ -112,7 +119,7 @@ export default {
 		},
 		writeLine: function(cmdInput, timeStamp, cmdOutput) {
 			cmdOutput.timeStamp = timeStamp;
-			cmdOutput.cmdInput = cmdInput;
+			if (cmdOutput.cmdInput === undefined) cmdOutput.cmdInput = cmdInput;
 			this.entries.push(cmdOutput);
 		}
 	}

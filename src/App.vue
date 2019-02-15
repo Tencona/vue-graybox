@@ -16,7 +16,7 @@ export default {
 	data() {
 		return {
 			config: {
-				globalPrefix: "Test"
+				// globalPrefix: "Test"
 			}
 		};
 	},
@@ -24,10 +24,20 @@ export default {
 		runCommand: function(userInput) {
 			//The function called to by `onCommand` should return information in this template:
 			return {
-				//Required
-				cmdOutput: "Example output", //The text to be written after the user's input
-				//Optional
-				scopedPrefix: ``, //Prefix text written to the right of the global prefix
+				//Overrides - These can either be per entry, as done here, or placed in the data.config object to override the global configurations of the Terminal, to which things in here would override
+				// showCmdPrefix: true,
+				// showTime: true,
+				// showGlobalPrefix: true,
+				// globalPrefix: "",
+				// showScopedPrefix: true,
+				// scopedPrefix: "", //Prefix text written to the right of the global prefix
+				// showCmdInput: true,
+				// cmdInput: "", //Overrides the user's input
+				// showCmdOutput: true,
+				cmdOutput:
+					"Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output Example output ", //The text to be written after the user's input
+
+				//Reporting
 				isError: false,
 				errorMessage: "Bad things!",
 				isWarning: false,
