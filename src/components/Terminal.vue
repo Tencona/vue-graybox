@@ -35,6 +35,7 @@ export default {
 			config: {
 				enableInternalCommands: true,
 				showTime: true,
+				showCmdInput: true,
 				globalPrefix: ""
 			}
 		};

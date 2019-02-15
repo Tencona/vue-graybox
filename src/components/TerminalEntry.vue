@@ -2,19 +2,21 @@
 	<div class="terminalEntry">
 		<div class="cmdPrefixStickyWrapper">
 			<div class="cmdPrefix">
-				<template v-if="showTime">
+				<template v-if="config.showTime">
 					<div class="cmdPrefixTime">{{displayTime}}</div>
 				</template>
-				<template v-if="showPrefixGlobal">
+				<template v-if="config.globalPrefix">
 					<div class="cmdPrefixGlobal">{{config.globalPrefix}}</div>
 				</template>
-				<template v-if="showPrefixScoped">
+				<template v-if="entry.scopedPrefix">
 					<div class="cmdPrefixScoped">{{entry.scopedPrefix}}</div>
 				</template>
 			</div>
 		</div>
 		<div class="cmdText">
-			<div class="cmdInput">{{entry.cmdInput}}</div>
+			<template v-if="config.showCmdInput">
+				<div class="cmdInput">{{entry.cmdInput}}</div>
+			</template>
 			<div class="cmdOutput">{{entry.cmdOutput}}</div>
 		</div>
 	</div>
@@ -40,17 +42,7 @@ export default {
 			// showPrefixGlobal: true
 		};
 	},
-	computed: {
-		showTime() {
-			return this.config.showTime;
-		},
-		showPrefixGlobal() {
-			return this.config.globalPrefix;
-		},
-		showPrefixScoped() {
-			return this.entry.scopedPrefix;
-		}
-	},
+	computed: {},
 	methods: {}
 };
 </script>
@@ -85,7 +77,7 @@ export default {
 	border-left: 1px;
 	border-left-color: rgb(100, 100, 100);
 	border-left-style: solid;
-	padding-left: 4px;
+	padding-left: 8px;
 }
 .cmdInput {
 	color: rgb(150, 150, 150);
