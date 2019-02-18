@@ -17,8 +17,14 @@ export default class ParsedInput {
 		str = str.substring(str.indexOf(' '));
 		split = str.split(' -').slice(1);
 		split.forEach(s => {
-			let sp = s.split(' ');
-			let argument = { name: sp.shift(), values: sp };
+			let q = s.split('"');
+			q = q.map(x => x.trim());
+
+			let arr = q[0].split(' ');
+			arr = arr.concat(q.slice(1));
+			arr = arr.filter(x => x);
+
+			let argument = { name: arr.shift(), values: arr };
 			args.push(argument);
 		});
 
