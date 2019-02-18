@@ -119,7 +119,8 @@ export default {
 			);
 		},
 		writeLine: function(cmdInput, timeStamp, cmdOutput) {
-			cmdOutput.timeStamp = timeStamp;
+			if (cmdOutput.timeStamp === undefined)
+				cmdOutput.timeStamp = timeStamp;
 			if (cmdOutput.cmdInput === undefined) cmdOutput.cmdInput = cmdInput;
 			this.entries.push(cmdOutput);
 		}

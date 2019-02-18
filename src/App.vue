@@ -1,6 +1,5 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png">
 		<Terminal ref="terminal" title="Terminal v1.0" :onCommand="runCommand" :configuration="config"/>
 	</div>
 </template>
@@ -22,11 +21,12 @@ export default {
 	},
 	methods: {
 		runCommand: function(userInput) {
-			//The function called to by `onCommand` should return information in this template:
+			//The function called to by `onCommand` should return information in this template but nothing is required:
 			return {
 				//Overrides - These can either be per entry, as done here, or placed in the data.config object to override the global configurations of the Terminal, to which things in here would override
 				// showCmdPrefix: true,
 				// showTime: true,
+				// timeStamp: undefined,
 				// showGlobalPrefix: true,
 				// globalPrefix: "",
 				// showScopedPrefix: true,
