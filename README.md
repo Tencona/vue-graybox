@@ -4,7 +4,7 @@ A basic terminal written in Vue.
 
 ## How to use
 
-Bind Terminal.onCommand() to a function you want to be run when the user hits "Enter". The object returned is a `ParsedInput` that will have the command and arguments with their values.
+Bind Terminal.onCommand() to a function you want to be run when the user hits "Enter". The object returned is a `ParsedInput` that will have the command and arguments with their values. Using the up and down arrow keys cycle through past commands.
 
 ```html
 <Terminal ref="terminal" title="Terminal" :onCommand="runCommand" :configuration="config" />
