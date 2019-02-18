@@ -19,6 +19,7 @@
 <script>
 import TerminalEntry from "../components/TerminalEntry.vue";
 import Vue from "vue";
+import parsedInput from "../parsedInput";
 
 export default {
 	name: "Terminal",
@@ -106,7 +107,7 @@ export default {
 				this.writeLine(
 					this.cmdInput,
 					now,
-					this.onCommand(this.cmdInput)
+					this.onCommand(new parsedInput(this.cmdInput))
 				);
 			}
 
