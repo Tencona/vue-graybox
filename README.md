@@ -56,6 +56,7 @@ config = {
 ### Scoped Configurations
 
 The function that is called from `onCommand` should return an object for the Terminal to output to the line.
+Every property is optional and will only affect the Terminal entry it is passed to.
 Object Format:
 
 ```javascript
@@ -76,5 +77,3 @@ return {
 	informationMessage: 'Things!',
 };
 ```
-
-Every property above is optional and will only affect the Terminal entry it is passed to.
