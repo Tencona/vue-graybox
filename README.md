@@ -10,6 +10,29 @@ Bind Terminal.onCommand() to a function you want to be run when the user hits "E
 <Terminal ref="terminal" title="Terminal" :onCommand="runCommand" :configuration="config" />
 ```
 
+```javascript
+export default {
+	name: 'app',
+	components: {
+		Terminal,
+	},
+	data() {
+		return {
+			config: {
+				globalPrefix: "My App's Name",
+			},
+		};
+	},
+	methods: {
+		runCommand: function(userInput) {
+			return {
+				cmdOutput: 'Example output.',
+			};
+		},
+	},
+};
+```
+
 ### ParsedInput
 
 The ParsedInput object parses out the first word as the command, then all arguments and values grouped as `-argument val1 val2`. It will always returns the raw text input as well.
