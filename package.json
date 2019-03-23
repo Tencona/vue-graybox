@@ -1,6 +1,12 @@
 {
   "name": "vue-terminal",
   "version": "0.1.0",
+  "main": "dist/vue-terminal.umd.js",
+  "module": "dist/vue-terminal.esm.js",
+  "unpkg": "dist/vue-terminal.min.js",
+  "browser": {
+    "./sfc": "src/vue-terminal.vue"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
