@@ -1,4 +1,4 @@
-# vue-terminal
+# vue-graybox
 
 A basic terminal written in Vue.
 
