@@ -1,8 +1,8 @@
 {
   "name": "vue-graybox",
-  "version": "0.1.0",
-  "main": "dist/vue-graybox.umd.js",
-  "module": "dist/vue-graybox.esm.js",
+  "version": "0.1.2",
+  "main": "dist/vue-graybox.min.js",
+  "module": "dist/vue-graybox.min.js",
   "unpkg": "dist/vue-graybox.min.js",
   "browser": {
     "./sfc": "src/vue-graybox.vue"
