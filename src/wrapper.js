@@ -1,11 +1,11 @@
 // Import vue component
-import component from './Terminal.vue';
+import component from './Graybox.vue';
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
 	if (install.installed) return;
 	install.installed = true;
-	Vue.component('Terminal', component);
+	Vue.component('Graybox', component);
 }
 
 // Create module definition for Vue.use()

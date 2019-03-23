@@ -1,13 +1,12 @@
 {
-  "name": "vue-terminal",
+  "name": "vue-graybox",
   "version": "0.1.0",
-  "main": "dist/vue-terminal.umd.js",
-  "module": "dist/vue-terminal.esm.js",
-  "unpkg": "dist/vue-terminal.min.js",
+  "main": "dist/vue-graybox.umd.js",
+  "module": "dist/vue-graybox.esm.js",
+  "unpkg": "dist/vue-graybox.min.js",
   "browser": {
-    "./sfc": "src/vue-terminal.vue"
+    "./sfc": "src/vue-graybox.vue"
   },
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

@@ -1,16 +1,16 @@
 <template>
 	<div id="app">
-		<Terminal ref="terminal" title="Terminal v1.0" :onCommand="runCommand" :configuration="config"/>
+		<Graybox ref="graybox" title="Graybox v1.0" :onCommand="runCommand" :configuration="config"/>
 	</div>
 </template>
 
 <script>
-import Terminal from "./components/Terminal.vue";
+import Graybox from "./components/Graybox.vue";
 
 export default {
 	name: "app",
 	components: {
-		Terminal
+		Graybox
 	},
 	data() {
 		return {
@@ -22,8 +22,9 @@ export default {
 	methods: {
 		runCommand: function(userInput) {
 			//The function called to by `onCommand` should return information in this template but nothing is required:
+			let output = '';
 			return {
-				//Overrides - These can either be per entry, as done here, or placed in the data.config object to override the global configurations of the Terminal, to which things in here would override
+				//Overrides - These can either be per entry, as done here, or placed in the data.config object to override the global configurations of the Graybox, to which things in here would override
 				// showCmdPrefix: true,
 				// showTime: true,
 				// timeStamp: undefined,

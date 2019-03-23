@@ -4,17 +4,17 @@ A basic terminal written in Vue.
 
 ## How to use
 
-Bind Terminal.onCommand() to a function you want to be run when the user hits "Enter". The object returned is a `ParsedInput` that will have the command and arguments with their values. Using the up and down arrow keys cycle through past commands.
+Bind Graybox.onCommand() to a function you want to be run when the user hits "Enter". The object returned is a `ParsedInput` that will have the command and arguments with their values. Using the up and down arrow keys cycle through past commands.
 
 ```html
-<Terminal ref="terminal" title="Terminal" :onCommand="runCommand" :configuration="config" />
+<Graybox ref="graybox" title="Graybox" :onCommand="runCommand" :configuration="config" />
 ```
 
 ```javascript
 export default {
 	name: 'app',
 	components: {
-		Terminal,
+		Graybox,
 	},
 	data() {
 		return {
@@ -60,7 +60,7 @@ The ParsedInput object parses out the first word as the command, then all argume
 
 ### Global Configurations
 
-Binding an object to the `configuration` property of the Terminal will set its global configuration. Global configurations are used as the default formatting for every Terminal entry and are overriden by the scoped configurations in the section below.
+Binding an object to the `configuration` property of the Graybox will set its global configuration. Global configurations are used as the default formatting for every Graybox entry and are overriden by the scoped configurations in the section below.
 Available Configurations:
 
 ```javascript
@@ -78,8 +78,8 @@ config = {
 
 ### Scoped Configurations
 
-The function that is called from `onCommand` should return an object for the Terminal to output to the line.
-Every property is optional and will only affect the Terminal entry it is passed to.
+The function that is called from `onCommand` should return an object for the Graybox to output to the line.
+Every property is optional and will only affect the Graybox entry it is passed to.
 Object Format:
 
 ```javascript
@@ -87,7 +87,7 @@ return {
 	//Note: All properties from the Global Configurations are available here in addition to the following:
 	cmdInput: '', //Overrides the user's input
 	showCmdOutput: true, //Show or hide the cmdOuput
-	cmdOutput: 'Example output.', //Main output to be written to the Terminal
+	cmdOutput: 'Example output.', //Main output to be written to the Graybox
 
 	//Reporting - Currently nonfunctional but unharmful
 	isError: false,

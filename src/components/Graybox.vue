@@ -1,15 +1,15 @@
 <template>
-	<div class="terminal">
+	<div class="graybox">
 		<span class="title">{{ title }}</span>
 		<div ref="scroller" class="scroller">
-			<TerminalEntry
+			<GrayboxEntry
 				v-for="(entry) in entries"
 				:key="entry.timeStamp"
 				:entry="entry"
 				:config="config"
 			/>
 		</div>
-		<div class="terminalInput">
+		<div class="grayboxInput">
 			<span class="inputIndicator">></span>
 			<input type="text" class="inputLine" v-model="cmdInput" @keyup="onKeyUp">
 		</div>
@@ -17,14 +17,14 @@
 </template>
 
 <script>
-import TerminalEntry from "../components/TerminalEntry.vue";
+import GrayboxEntry from "../components/GrayboxEntry.vue";
 import Vue from "vue";
 import parsedInput from "../parsedInput";
 
 export default {
-	name: "Terminal",
+	name: "Graybox",
 	components: {
-		TerminalEntry
+		GrayboxEntry
 	},
 	props: ["title", "onCommand", "configuration", "commands"],
 	data: function() {
@@ -129,7 +129,7 @@ export default {
 </script>
 
 <style scoped>
-.terminal {
+.graybox {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -150,7 +150,7 @@ export default {
 	outline: none;
 	flex: 1 0;
 }
-.terminalInput {
+.grayboxInput {
 	display: flex;
 	padding: 8px 0px 8px 0px;
 }

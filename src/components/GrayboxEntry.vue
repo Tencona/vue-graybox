@@ -1,5 +1,5 @@
 <template>
-	<div class="terminalEntry">
+	<div class="grayboxEntry">
 		<template v-if="getEntryOverride('showCmdPrefix')">
 			<div class="cmdPrefixStickyWrapper">
 				<div class="cmdPrefix">
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-	name: "TerminalEntry",
+	name: "GrayboxEntry",
 	props: {
 		entry: Object,
 		config: Object
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style scoped>
-.terminalEntry {
+.grayboxEntry {
 	display: flex;
 	margin-top: 12px;
 }
