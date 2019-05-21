@@ -2,6 +2,12 @@
 
 A basic terminal written in Vue.
 
+## How to Install
+
+```
+npm install --save vue-graybox
+```
+
 ## How to use
 
 Bind Graybox.onCommand() to a function you want to be run when the user hits "Enter". The object returned is a `ParsedInput` that will have the command and arguments with their values. Using the up and down arrow keys cycle through past commands.
@@ -11,6 +17,8 @@ Bind Graybox.onCommand() to a function you want to be run when the user hits "En
 ```
 
 ```javascript
+import Graybox from 'vue-graybox/src/components/Graybox';
+
 export default {
 	name: 'app',
 	components: {
