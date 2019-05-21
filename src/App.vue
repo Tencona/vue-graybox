@@ -22,7 +22,7 @@ export default {
 	methods: {
 		runCommand: function(userInput) {
 			//The function called to by `onCommand` should return information in this template but nothing is required:
-			let output = '';
+			let output = "";
 			return {
 				//Overrides - These can either be per entry, as done here, or placed in the data.config object to override the global configurations of the Graybox, to which things in here would override
 				// showCmdPrefix: true,
@@ -35,6 +35,7 @@ export default {
 				// showCmdInput: true,
 				// cmdInput: "", //Overrides the user's input
 				// showCmdOutput: true,
+				userInput: userInput,
 				cmdOutput: output, //The text to be written after the user's input
 
 				//Reporting
@@ -52,5 +53,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -4,23 +4,23 @@
 			<div class="cmdPrefixStickyWrapper">
 				<div class="cmdPrefix">
 					<template v-if="getEntryOverride('showTime')">
-						<div class="cmdPrefixTime">{{displayTime}}</div>
+						<div class="cmdPrefixTime">{{ displayTime }}</div>
 					</template>
 					<template v-if="getEntryOverride('showGlobalPrefix')">
-						<div class="cmdPrefixGlobal">{{getEntryOverride('globalPrefix')}}</div>
+						<div class="cmdPrefixGlobal">{{ getEntryOverride("globalPrefix") }}</div>
 					</template>
 					<template v-if="getEntryOverride('showScopedPrefix')">
-						<div class="cmdPrefixScoped">{{getEntryOverride('scopedPrefix')}}</div>
+						<div class="cmdPrefixScoped">{{ getEntryOverride("scopedPrefix") }}</div>
 					</template>
 				</div>
 			</div>
 		</template>
 		<div class="cmdText">
 			<template v-if="getEntryOverride('showCmdInput')">
-				<div class="cmdInput">{{entry.cmdInput}}</div>
+				<div class="cmdInput">{{ entry.cmdInput }}</div>
 			</template>
 			<template v-if="getEntryOverride('showCmdOutput')">
-				<div class="cmdOutput">{{entry.cmdOutput}}</div>
+				<div class="cmdOutput">{{ entry.cmdOutput }}</div>
 			</template>
 		</div>
 	</div>
@@ -33,9 +33,7 @@ export default {
 		entry: Object,
 		config: Object
 	},
-	mounted() {
-		var s = "";
-	},
+	mounted() {},
 	data: function() {
 		return {
 			displayTime: new Date(this.entry.timeStamp)

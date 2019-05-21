@@ -1,5 +1,5 @@
 // Import vue component
-import component from './Graybox.vue';
+import component from './components/Graybox.vue';
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {

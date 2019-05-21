@@ -2,12 +2,7 @@
 	<div class="graybox">
 		<span class="title">{{ title }}</span>
 		<div ref="scroller" class="scroller">
-			<GrayboxEntry
-				v-for="(entry) in entries"
-				:key="entry.timeStamp"
-				:entry="entry"
-				:config="config"
-			/>
+			<GrayboxEntry v-for="entry in entries" :key="entry.timeStamp" :entry="entry" :config="config"/>
 		</div>
 		<div class="grayboxInput">
 			<span class="inputIndicator">></span>
@@ -18,7 +13,6 @@
 
 <script>
 import GrayboxEntry from "../components/GrayboxEntry.vue";
-import Vue from "vue";
 import parsedInput from "../parsedInput";
 
 export default {
