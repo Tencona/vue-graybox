@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import GrayboxEntry from "../components/GrayboxEntry.vue";
 import parsedInput from "../parsedInput";
 

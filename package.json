@@ -1,6 +1,6 @@
 {
 	"name": "vue-graybox",
-	"version": "0.1.9",
+	"version": "0.1.92",
 	"main": "dist/vue-graybox.umd.js",
 	"module": "dist/vue-graybox.esm.js",
 	"unpkg": "dist/vue-graybox.min.js",
