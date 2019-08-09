@@ -1,7 +1,7 @@
 # vue-graybox
 
 A basic terminal written in Vue.
-
+![Graybox](https://i.imgur.com/4Mmmiwr.png)
 ## How to Install
 
 ```
