@@ -1,19 +1,19 @@
 {
-	"name": "vue-graybox",
-	"version": "0.1.92",
-	"main": "dist/vue-graybox.umd.js",
-	"module": "dist/vue-graybox.esm.js",
-	"unpkg": "dist/vue-graybox.min.js",
+	"name": "graybox",
+	"version": "0.0.1",
+	"main": "dist/graybox.umd.js",
+	"module": "dist/graybox.esm.js",
+	"unpkg": "dist/graybox.min.js",
 	"browser": {
-		"./sfc": "src/vue-graybox.vue"
+		"./sfc": "src/graybox.vue"
 	},
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"lint": "vue-cli-service lint",
 		"build": "vue-cli-service build",
-		"build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-graybox.umd.js",
-		"build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-graybox.esm.js",
-		"build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-graybox.min.js"
+		"build:umd": "rollup --config build/rollup.config.js --format umd --file dist/graybox.umd.js",
+		"build:es": "rollup --config build/rollup.config.js --format es --file dist/graybox.esm.js",
+		"build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/graybox.min.js"
 	},
 	"dependencies": {
 		"vue": "^2.6.10",

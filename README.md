@@ -1,11 +1,11 @@
-# vue-graybox
+# graybox
 
 A basic terminal written in Vue.
 ![Graybox](https://i.imgur.com/4Mmmiwr.png)
 ## How to Install
 
 ```
-npm install --save vue-graybox
+npm install --save graybox
 ```
 
 ## How to use
@@ -17,7 +17,7 @@ Bind Graybox.onCommand() to a function you want to be run when the user hits "En
 ```
 
 ```javascript
-import Graybox from 'vue-graybox/src/components/Graybox';
+import Graybox from 'graybox/src/components/Graybox';
 
 export default {
 	name: 'app',
